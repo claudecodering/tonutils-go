@@ -58,7 +58,7 @@ func compileField(parent reflect.Type, f reflect.StructField, tags []string) *fi
 	for {
 		if strings.HasPrefix(tags[0], "?") {
 			if flagsUsed {
-				panic("field can only contain singe flag")
+				panic("field can only contain single flag")
 			}
 
 			bit, err := strconv.Atoi(tags[0][1:])
@@ -303,7 +303,7 @@ func addressablePtr(val reflect.Value) (reflect.Value, error) {
 		if !val.CanAddr() {
 			si := _structInfoTable[val.Type().String()]
 			if si == nil {
-				return reflect.Value{}, fmt.Errorf("tl type %s is not compilled", val.Type().String())
+				return reflect.Value{}, fmt.Errorf("tl type %s is not compiled", val.Type().String())
 			}
 
 			rvx := si.fabric()
@@ -362,7 +362,7 @@ func serializeStruct(v reflect.Value, buf *bytes.Buffer, boxed bool, field *fiel
 
 	si := _structInfoTable[rv.Type().Elem().String()]
 	if si == nil {
-		return fmt.Errorf("tl type %s is not compilled", rv.Type().String())
+		return fmt.Errorf("tl type %s is not compiled", rv.Type().String())
 	}
 
 	if field != nil && !field.checkIsAllowed(si) {
@@ -431,7 +431,7 @@ func Parse(v Serializable, data []byte, boxed bool) (_ []byte, err error) {
 	case reflect.Struct:
 		info = _structInfoTable[srcE.Type().String()]
 		if info == nil {
-			return nil, fmt.Errorf("tl type %s is not compilled", srcE.Type().String())
+			return nil, fmt.Errorf("tl type %s is not compiled", srcE.Type().String())
 		}
 
 		if data, err = parsePrecompiled(src.UnsafePointer(), info, boxed, data, false); err != nil {

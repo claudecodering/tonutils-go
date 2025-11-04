@@ -9,7 +9,7 @@ func init() {
 	tl.Register(LiteServerQuery{}, "liteServer.query data:bytes = Object")
 	tl.Register(TCPPing{}, "tcp.ping random_id:long = tcp.Pong")
 	tl.Register(TCPPong{}, "tcp.pong random_id:long = tcp.Pong")
-	tl.Register(TCPAuthenticate{}, "tcp.authentificate nonce:bytes = tcp.Message")
+	tl.Register(TCPAuthenticate{}, "tcp.authenticate nonce:bytes = tcp.Message")
 	tl.Register(TCPAuthenticationNonce{}, "tcp.authentificationNonce nonce:bytes = tcp.Message")
 	tl.Register(TCPAuthenticationComplete{}, "tcp.authentificationComplete key:PublicKey signature:bytes = tcp.Message")
 }

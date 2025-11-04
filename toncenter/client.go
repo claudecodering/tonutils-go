@@ -229,7 +229,7 @@ func do[T any](c *Client, req *http.Request, isV3 bool) (*T, error) {
 	if isV3 {
 		var tr T
 		if err = json.Unmarshal(body, &tr); err != nil {
-			return nil, fmt.Errorf("toncenter api respose parse error: %w", err)
+			return nil, fmt.Errorf("toncenter api response parse error: %w", err)
 		}
 
 		return &tr, nil

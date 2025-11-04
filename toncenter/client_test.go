@@ -268,7 +268,7 @@ func TestV2(t *testing.T) {
 	t.Run("try locate source tx", func(t *testing.T) {
 		resp, err := cli.V2().TryLocateSourceTx(context.Background(), tx.InMsg.Source.Addr, tx.InMsg.Destination.Addr, tx.InMsg.CreatedLt)
 		if err != nil {
-			// as Toncenter team said, it is not always works on api side, thats why it is deprecated
+			// as Toncenter team said, it is not always works on api side, that's why it is deprecated
 			t.Log(err)
 
 			return
